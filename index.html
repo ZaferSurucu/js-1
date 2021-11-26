@@ -3,89 +3,35 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 
 <body>
-    <script>
 
-        let playerScore = 0;
-        let computerScore = 0;
+    <div class="team-buttons">
+        <button id="fener">fenerbahçe</button>
+        <button id="besik">beşiktaş</button>
+        <button id="galat">galatasaray</button>
+    </div>
 
-        function computerPlay(){
-            random = Math.floor(Math.random() * (3) +1);
-            switch (random){
-                case 1:
-                    return "rock"
-                    break;
-                case 2:
-                    return "paper"
-                    break;
-                default:
-                    return "scissors"
-            }
-        }
-
-        function playRound(playerSelection, computerSelection){
-            switch(playerSelection.toLowerCase()){
-                case computerSelection:
-                    playerScore++;
-                    computerScore++;
-                    return "Tie"
-                    break;
-                case "rock":
-                    if(computerSelection == "paper"){
-                        computerScore++;
-                        return "You Lose! Paper beats Rock"
-                    } else{
-                        playerScore++;
-                        return "You Win! Rock beats Scissors"
-                    }
-                    break;
-                case "paper":
-                    if(computerSelection == "scissors"){
-                        computerScore++;
-                        return "You Lose! Scissors beats Paper"
-
-                    } else{
-                        playerScore++;
-                        return "You Win! Paper beats Rock"
-                    }
-                    break;
-                case "scissors":
-                    if(computerSelection == "rock"){
-                        computerScore++;
-                        return "You Lose! Rock beats Scissors"
-                    } else{
-                        playerScore++;
-                        return "You Win! Scissors beats Paper"
-                    }
-                    break;
-            }
-        }
-
-        function game(){
-            count = 0;
-            while (count != 5){
-                computersChoice = computerPlay()
-                playersChoice = window.prompt("rock,paper,scissors")
-                console.log(computersChoice);
-                console.log(playersChoice);
-                console.log(playRound(playersChoice, computersChoice));
-                count++;
-                console.log(count);
-                console.log(playerScore);
-                console.log(computerScore);
-            }
-            if(playerScore > computerScore){
-                console.log("You Won!");
-            } else if (computerScore > playerScore){
-                console.log("You Lost!");
-            } else {
-                console.log("Scores are even");
-            }
-        }
-
-        game();
-    </script>
+    <div class="buttons">
+        <div class="image-button">
+            <img src="rock.png">
+            <button>ROCK</button>
+        </div>
+        <div class="image-button">
+            <img src="paper.png">
+            <button>PAPER</button>
+        </div>
+        <div class="image-button">
+            <img src="scissors.png">
+            <button>SCISSORS</button>
+        </div>
+    </div>
+    <div class="scores">
+        <div class="player_score">Your score:</div>
+        <div class="computer-score">Computer score:</div>
+    </div>
 </body>
 </html>
