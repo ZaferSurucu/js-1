@@ -10,15 +10,22 @@ body {
     align-items: center;
     justify-content: center;
     margin: 250px;
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
+}
+
+#promt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    font-weight: 900;
 }
 
 .buttons {
     display: flex;
     margin: 100px;
     gap: 100px;
-
 }
 
 button {
@@ -31,6 +38,23 @@ button {
     color: white;
 }
 
+button:hover {
+    font-size: 27px;
+    font-weight: 800;
+    background-color: white;
+    border: 3px solid black;
+    color: black;
+}
+
+button:active {
+    background-color: black;
+    transform: translateY(4px);
+    font-size: 27px;
+    font-weight: 900;
+    border: 4px solid white;
+    color: white;
+}
+
 .image-button {
     display: flex;
     flex-direction: column;
@@ -38,10 +62,13 @@ button {
 }
 
 img {
+    border-radius: 15%;
     height: 200px;
     width: 250px;
     border: 2px solid white;
     padding: 25px;
+    border: 2px solid black;
+    border-radius: 25%;
 }
 
 .scores {

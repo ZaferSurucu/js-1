@@ -1,16 +1,13 @@
 let playerScore = 0;
 let computerScore = 0;
 
-const imgs = document.querySelectorAll("img");
-const body = document.querySelector("body");
+const playerScoreBox = document.querySelector("#player-score");
+const computerScoreBox = document.querySelector("#computer-score");
+const promt = document.querySelector("#promt");
+
+let playerSelection = " ";
+
 const buttons = document.querySelectorAll("button");
-
-const galat = document.querySelector("#galat");
-const fener = document.querySelector("#fener");
-const besik = document.querySelector("#besik");
-
-var primerColor = "black"
-var secondaryColor = "white"
 
 function computerPlay(){
     random = Math.floor(Math.random() * (3) +1);
@@ -25,46 +22,6 @@ function computerPlay(){
             return "scissors"
     }
 }
-
-galat.addEventListener("click", () => {
-    primerColor = "yellow";
-    secondaryColor = "red";
-});
-
-fener.addEventListener("click", () => {
-    primerColor = "darkblue";
-    secondaryColor = "yellow";
-});
-
-besik.addEventListener("click", () => {
-    primerColor = "black";
-    secondaryColor = "white";
-});
-
-
-buttons.forEach(button => {
-    button.addEventListener("mouseenter", function(event) {
-        body.style.backgroundColor = secondaryColor;
-        body.style.color = primerColor;
-        imgs.forEach(image => {
-            image.setAttribute("style","border: 2px solid ${primerColor}; width: 275px; height: 215px;");
-        });
-        event.style.backgroundColor = secondaryColor;
-        event.setAttribute("height: 110px; width: 275px; font-size: 30px; font-weight: 900; background-color: ${primerColor}; border: 3px solid black; color: black;");
-        event.style.borderColor = primerColor;
-    });
-
-    button.addEventListener("mouseleave", function(event) {
-        body.style.backgroundColor = primerColor;
-        body.style.color = secondaryColor;
-        imgs.forEach(image => {
-            image.setAttribute("style","border: 2px solid ${secondaryColor}; width: 250px; height: 200px;");
-        });
-        event.style.backgroundColor = secondaryColor;
-        event.setAttribute("height: 100px; width: 250px; font-size: 25px; font-weight: 700; background-color: ${secondaryColor}; border: 2px solid black; color: black;");
-        event.style.borderColor = secondaryColor;
-    });
-});
 
 function playRound(playerSelection, computerSelection){
     switch(playerSelection.toLowerCase()){
@@ -104,25 +61,18 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-function game(){
-    count = 0;
-    while (count != 5){
-        computersChoice = computerPlay()
-        console.log(computersChoice);
-        console.log(playersChoice);
-        console.log(playRound(playersChoice, computersChoice));
-        count++;
-        console.log(count);
-        console.log(playerScore);
-        console.log(computerScore);
-    }
-    if(playerScore > computerScore){
-        console.log("You Won!");
-    } else if (computerScore > playerScore){
-        console.log("You Lost!");
-    } else {
-        console.log("Scores are even");
-    }
-}
+buttons.forEach(button => {
+    button.addEventListener("click", () => {
+        playerSelection = button.getAttribute("id");
+        game(playerSelection);
+    });
+});
 
-game();
+function game(playerSelection){
+    computersChoice = computerPlay();
+    promt.innerHTML = playRound(playerSelection,computersChoice);
+    playerScoreBox.innerText = `Your score: ${playerScore}`;
+    computerScoreBox.innerText = `Computer score: ${computerScore}`;
+    console.log(playerScore);
+    console.log(computerScore);
+}
